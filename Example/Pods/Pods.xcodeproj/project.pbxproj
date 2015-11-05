@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		191F9989DAC032B91AA83755C6C70799 /* Alertable-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D8559BBFBA3E7496C96675A2CFB0538 /* Alertable-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		19CB61C96AAE3110C724DD09D94D988A /* UIViewController+Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E99FDC043DF3CEEA730F5D590CCD80D /* UIViewController+Alertable.swift */; };
 		5AEDD16268CAA8437E9CAF399F8FBE03 /* Pods-Alertable_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46009F1884E53892BD713A099D762707 /* Pods-Alertable_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65506A4EAAFC3FF0EA5E81DCD04CE72F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
 		693C2C5C1412F4EE0BCC422076A4FAF5 /* Pods-Alertable_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCBB79C090B82B84B811FAAD3CF68FD /* Pods-Alertable_Tests-dummy.m */; };
@@ -42,7 +41,6 @@
 		7D8559BBFBA3E7496C96675A2CFB0538 /* Alertable-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alertable-umbrella.h"; sourceTree = "<group>"; };
 		812FFB4B7EB589FA006B6525381D96C8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8519FB3B17F8E797DF6BCF6AB074B199 /* Alertable.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alertable.xcconfig; sourceTree = "<group>"; };
-		8E99FDC043DF3CEEA730F5D590CCD80D /* UIViewController+Alertable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alertable.swift"; sourceTree = "<group>"; };
 		9DA3E7F219145C07F5363FA7B00354F3 /* Pods-Alertable_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Alertable_Tests-resources.sh"; sourceTree = "<group>"; };
 		AF3267256287B35D7F394AFE0435B9C0 /* Alertable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -150,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				AF3267256287B35D7F394AFE0435B9C0 /* Alertable.swift */,
-				8E99FDC043DF3CEEA730F5D590CCD80D /* UIViewController+Alertable.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -278,7 +275,6 @@
 			files = (
 				D14FFCDAFF16F645C8BF35651F3FD640 /* Alertable-dummy.m in Sources */,
 				BFABE1BB0BFF91484ED1B89B533416E8 /* Alertable.swift in Sources */,
-				19CB61C96AAE3110C724DD09D94D988A /* UIViewController+Alertable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
