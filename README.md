@@ -7,9 +7,27 @@
 
 ## Usage
 
+    import Alertable
+
+    class ViewController: UIViewController {
+        func alertSomething() {
+            Alert.show("Message", "Title", self)
+        }
+    }
+    
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Localization
+
+The only localizable string in this library is the default "Ok" button on alerts that have only one button. To localize it, simple add an entry to your Localizable.strings file with the following signature:
+
+`"Ok" = "<Your Translation>";`
+
 ## Requirements
+
+iOS 8+
+Swift 2.0
 
 ## Installation
 
