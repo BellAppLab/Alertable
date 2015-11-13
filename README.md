@@ -7,14 +7,15 @@
 
 ## Usage
 
-    import Alertable
+```swift
+import Alertable
 
-    class ViewController: UIViewController {
-        func alertSomething() {
-            Alert.show("Message", "Title", self)
-        }
+class ViewController: UIViewController {
+    func alertSomething() {
+        Alert.show("Message", "Title", self)
     }
-    
+}
+```
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
