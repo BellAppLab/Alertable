@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Alertable"
-  s.version          = "0.2.0"
+  s.version          = "0.2.1"
   s.summary          = "A simplified way of presenting alerts on iOS with Swift."
 
   s.description      = <<-DESC
