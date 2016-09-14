@@ -40,8 +40,8 @@ public extension Alertable
 public struct Alert
 {
     //MARK: - Private
-    private let controller: UIAlertController
-    private let sender: UIViewController?
+    fileprivate let controller: UIAlertController
+    fileprivate let sender: UIViewController?
     
     //MARK: - Public
     /*
@@ -51,11 +51,11 @@ public struct Alert
         @params style: The Action's style. If no style is provided, `.Default` is assumed.
         @params handler: The Action's handler block. Optional.
     */
-    public class Action
+    open class Action
     {
-        public let title: String?
-        public let style: UIAlertActionStyle?
-        public let handler: ((UIAlertAction) -> Void)?
+        open let title: String?
+        open let style: UIAlertActionStyle?
+        open let handler: ((UIAlertAction) -> Void)?
         
         public init(title: String?, style: UIAlertActionStyle?, handler: ((UIAlertAction) -> Void)?)
         {
@@ -81,18 +81,18 @@ public struct Alert
         @params actions: You may provide Actions for the alert. Optional.
         @discussion If no actions are provided, a default 'Ok' action will be created. (No localization files are provided with this library, but the 'Ok' message is created with `NSLocalizedString`, so should the parent app have the key 'Ok' set up, Alertable will pick it up.)
     */
-    public init(_ message: String, _ title: String? = nil, _ sender: UIViewController? = nil, _ actions: [Action]? = nil, _ style: UIAlertControllerStyle = .Alert)
+    public init(_ message: String, _ title: String? = nil, _ sender: UIViewController? = nil, _ actions: [Action]? = nil, _ style: UIAlertControllerStyle = .alert)
     {
         self.controller = UIAlertController(title: title, message: message, preferredStyle: style)
         if actions != nil && !actions!.isEmpty {
             for action in actions! {
-                self.controller.addAction(UIAlertAction(title: action.title, style: action.style ?? .Default, handler: { (alertAction: UIAlertAction) -> Void in
+                self.controller.addAction(UIAlertAction(title: action.title, style: action.style ?? .default, handler: { (alertAction: UIAlertAction) -> Void in
                     Alert.on = false
                     action.handler?(alertAction)
                 }))
             }
         } else {
-            self.controller.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "A simple ok message"), style: .Default, handler: { (alertAction: UIAlertAction) -> Void in
+            self.controller.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "A simple ok message"), style: .default, handler: { (alertAction: UIAlertAction) -> Void in
                 Alert.on = false
             }))
         }
@@ -105,7 +105,7 @@ public struct Alert
         @params sender: A UIViewController to present the Alert. Optional.
         @discussion If no sender is provided, either during the init process or when calling this method, no alert is ever presented. If both senders are provided, the one provided on this method overrides the one provided during init. Additionally, if we're already alerting, this method does nothing.
     */
-    public func show(sender: UIViewController? = nil)
+    public func show(_ sender: UIViewController? = nil)
     {
         if let finalSender = sender {
             self.show(finalSender)
@@ -114,13 +114,13 @@ public struct Alert
         }
     }
     
-    private func show(viewController: UIViewController)
+    fileprivate func show(_ viewController: UIViewController)
     {
         if Alert.on {
             return
         }
         Alert.on = true
-        viewController.presentViewController(self.controller, animated: true, completion: nil)
+        viewController.present(self.controller, animated: true, completion: nil)
     }
     
     /*
@@ -132,7 +132,7 @@ public struct Alert
         @params actions: You may provide Actions for the alert. Optional.
         @discussion If no actions are provided, a default 'Ok' action will be created.
     */
-    public static func show(message: String, _ title: String? = nil, _ sender: UIViewController? = nil, _ actions: [Action]? = nil)
+    public static func show(_ message: String, _ title: String? = nil, _ sender: UIViewController? = nil, _ actions: [Action]? = nil)
     {
         Alert(message, title, sender, actions).show()
     }
