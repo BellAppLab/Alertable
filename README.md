@@ -25,6 +25,10 @@ The only localizable string in this library is the default "Ok" button on alerts
 
 ## Installation
 
+### Cocoapods
+
+Because of [this](http://stackoverflow.com/questions/39637123/cocoapods-app-xcworkspace-does-not-exists), I've dropped support for Cocoapods on this repo. I cannot have production code rely on a dependency manager that breaks this badly. 
+
 ### Git Submodules
 
 **Why submodules, you ask?**
