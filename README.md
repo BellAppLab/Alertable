@@ -5,8 +5,6 @@ A simplified way of presenting alerts on iOS with Swift.
 ## Usage
 
 ```swift
-import Alertable
-
 class ViewController: UIViewController {
     func alertSomething() {
         Alert.show("Message", "Title", self)
