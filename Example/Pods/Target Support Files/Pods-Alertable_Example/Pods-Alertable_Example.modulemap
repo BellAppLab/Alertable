@@ -1,6 +1,0 @@
-framework module Pods_Alertable_Example {
-  umbrella header "Pods-Alertable_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
