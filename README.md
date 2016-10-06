@@ -39,7 +39,7 @@ To install Alertable using git submodules:
 
 ```
 cd toYourProjectsFolder
-git submodule add -b Submodule --name Alertable https://github.com/BellAppLab/Alertable.git
+git submodule add --name Alertable https://github.com/BellAppLab/Alertable.git
 ```
 
 Navigate to the new Alertable folder and drag the `Source` folder into your Xcode project.
