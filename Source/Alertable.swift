@@ -1,34 +1,14 @@
 import UIKit
 
-/**
-    Alertable
-    
-    Protocol that defines how to present an Alert.
-*/
-public protocol Alertable
-{
-    /**
-    Easily check if we're currently alerting the user.
-    */
-    var alerting: Bool { get }
-    
-    /**
-    Quickly present an alert to the user.
-    
-    - param alert: The alert to be presented.
-    - discussion This method assumes we're presenting the alert from the View Controller that stored within the Alert. See Alert's documentation for more details.
-    */
-    func alert(this alert: Alert)
-}
 
-public extension Alertable
+public extension UIViewController
 {
     public var alerting: Bool {
         return Alert.on
     }
     
     public func alert(this alert: Alert) {
-        alert.show()
+        alert.show(self)
     }
 }
 
@@ -40,8 +20,8 @@ public extension Alertable
 public struct Alert
 {
     //MARK: - Private
-    fileprivate let controller: UIAlertController
-    fileprivate let sender: UIViewController?
+    private let controller: UIAlertController
+    private let sender: UIViewController?
     
     //MARK: - Public
     /**
@@ -51,13 +31,15 @@ public struct Alert
         - param     style: The Action's style. If no style is provided, `.default` is assumed.
         - param     handler: The Action's handler block. Optional.
     */
-    open class Action
+    public class Action
     {
-        open let title: String?
-        open let style: UIAlertActionStyle?
-        open let handler: ((UIAlertAction) -> Void)?
+        public let title: String?
+        public let style: UIAlertActionStyle?
+        public let handler: ((UIAlertAction) -> Void)?
         
-        public init(title: String?, style: UIAlertActionStyle?, handler: ((UIAlertAction) -> Void)?)
+        public init(title: String?,
+                    style: UIAlertActionStyle?,
+                    handler: ((UIAlertAction) -> Void)?)
         {
             self.title = title
             self.style = style
@@ -81,7 +63,11 @@ public struct Alert
         - param     actions: You may provide Actions for the alert. Optional.
         - discussion    If no actions are provided, a default 'Ok' action will be created. (No localization files are provided with this library, but the 'Ok' message is created with `NSLocalizedString`, so should the parent app have the key 'Ok' set up, Alertable will pick it up.)
     */
-    public init(_ message: String, _ title: String? = nil, _ sender: UIViewController? = nil, _ actions: [Action]? = nil, _ style: UIAlertControllerStyle = .alert)
+    public init(_ message: String,
+                _ title: String? = nil,
+                _ sender: UIViewController? = nil,
+                _ actions: [Action]? = nil,
+                _ style: UIAlertControllerStyle = .alert)
     {
         self.controller = UIAlertController(title: title, message: message, preferredStyle: style)
         if actions != nil && !actions!.isEmpty {
@@ -114,13 +100,15 @@ public struct Alert
         }
     }
     
-    fileprivate func show(_ viewController: UIViewController)
+    private func show(_ viewController: UIViewController)
     {
         if Alert.on {
             return
         }
         Alert.on = true
-        viewController.present(self.controller, animated: true, completion: nil)
+        viewController.present(self.controller,
+                               animated: true,
+                               completion: nil)
     }
     
     /**
@@ -132,7 +120,10 @@ public struct Alert
         - param     actions: You may provide Actions for the alert. Optional.
         - discussion    If no actions are provided, a default 'Ok' action will be created.
     */
-    public static func show(_ message: String, _ title: String? = nil, _ sender: UIViewController? = nil, _ actions: [Action]? = nil)
+    public static func show(_ message: String,
+                            _ title: String? = nil,
+                            _ sender: UIViewController? = nil,
+                            _ actions: [Action]? = nil)
     {
         Alert(message, title, sender, actions).show()
     }
