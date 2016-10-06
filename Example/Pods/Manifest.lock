@@ -1,0 +1,16 @@
+PODS:
+  - Alertable (0.4.0)
+
+DEPENDENCIES:
+  - Alertable (from `../`)
+
+EXTERNAL SOURCES:
+  Alertable:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alertable: d20e0cfbccaeea1bc4cc9e85bddf6327f102ea7e
+
+PODFILE CHECKSUM: dd4acd6d43857c87b775e282171339b9ef3d9ae9
+
+COCOAPODS: 1.0.1
