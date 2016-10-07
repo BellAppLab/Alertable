@@ -2,6 +2,8 @@
 
 A simplified way of presenting alerts on iOS with Swift.
 
+_v0.4.0_
+
 ## Usage
 
 ```swift
