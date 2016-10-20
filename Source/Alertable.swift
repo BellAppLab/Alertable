@@ -3,10 +3,18 @@ import UIKit
 
 public extension UIViewController
 {
+    /**
+     Indicates whether we're alerting something.
+     
+     - discussion   This property exposes locally the global alert state, so we don't alerts don't overlap each other.
+     */
     public var alerting: Bool {
         return Alert.on
     }
     
+    /**
+     Presents an alert.
+     */
     public func alert(this alert: Alert) {
         alert.show(self)
     }
