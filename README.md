@@ -44,6 +44,12 @@ cd toYourProjectsFolder
 git submodule add -b submodule --name Alertable https://github.com/BellAppLab/Alertable.git
 ```
 
+**Swift 2 support**
+
+```
+git submodule add -b swift2 --name Alertable https://github.com/BellAppLab/Alertable.git
+```
+
 Navigate to the new Alertable folder and drag the `Source` folder into your Xcode project.
 
 ## Author
