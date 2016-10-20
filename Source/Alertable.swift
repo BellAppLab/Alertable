@@ -3,10 +3,18 @@ import UIKit
 
 public extension UIViewController
 {
+    /**
+     Indicates whether we're alerting something.
+     
+     - discussion   This property exposes locally the global alert state, so we don't alerts don't overlap each other.
+     */
     public var alerting: Bool {
         return Alert.on
     }
     
+    /**
+     Presents an alert.
+     */
     public func alert(this alert: Alert) {
         alert.show(self)
     }
@@ -67,18 +75,18 @@ public struct Alert
                 _ title: String? = nil,
                 _ sender: UIViewController? = nil,
                 _ actions: [Action]? = nil,
-                _ style: UIAlertControllerStyle = .alert)
+                _ style: UIAlertControllerStyle = .Alert)
     {
         self.controller = UIAlertController(title: title, message: message, preferredStyle: style)
         if actions != nil && !actions!.isEmpty {
             for action in actions! {
-                self.controller.addAction(UIAlertAction(title: action.title, style: action.style ?? .default, handler: { (alertAction: UIAlertAction) -> Void in
+                self.controller.addAction(UIAlertAction(title: action.title, style: action.style ?? .Default, handler: { (alertAction: UIAlertAction) -> Void in
                     Alert.on = false
                     action.handler?(alertAction)
                 }))
             }
         } else {
-            self.controller.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "A simple ok message"), style: .default, handler: { (alertAction: UIAlertAction) -> Void in
+            self.controller.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "A simple ok message"), style: .Default, handler: { (alertAction: UIAlertAction) -> Void in
                 Alert.on = false
             }))
         }
@@ -91,7 +99,7 @@ public struct Alert
         - param    sender: A UIViewController to present the Alert. Optional.
         - discussion    If no sender is provided, either during the init process or when calling this method, no alert is ever presented. If both senders are provided, the one provided on this method overrides the one provided during init. Additionally, if we're already alerting, this method does nothing.
     */
-    public func show(_ sender: UIViewController? = nil)
+    public func show(sender: UIViewController? = nil)
     {
         if let finalSender = sender {
             self.show(finalSender)
@@ -100,15 +108,15 @@ public struct Alert
         }
     }
     
-    private func show(_ viewController: UIViewController)
+    private func show(viewController: UIViewController)
     {
         if Alert.on {
             return
         }
         Alert.on = true
-        viewController.present(self.controller,
-                               animated: true,
-                               completion: nil)
+        viewController.presentViewController(self.controller,
+                                             animated: true,
+                                             completion: nil)
     }
     
     /**
@@ -120,7 +128,7 @@ public struct Alert
         - param     actions: You may provide Actions for the alert. Optional.
         - discussion    If no actions are provided, a default 'Ok' action will be created.
     */
-    public static func show(_ message: String,
+    public static func show(message: String,
                             _ title: String? = nil,
                             _ sender: UIViewController? = nil,
                             _ actions: [Action]? = nil)
